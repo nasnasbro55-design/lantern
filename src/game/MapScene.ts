@@ -30,7 +30,7 @@ export class MapScene extends Phaser.Scene {
       this.draw();
     });
     this.input.keyboard!.on('keydown-SPACE', () => this.toggle());
-    TOOLS.forEach((t, i) => this.input.keyboard!.on(`keydown-${i + 1}`, () => this.setTool(t)));
+    TOOLS.forEach((t, i) => this.input.keyboard!.on(`keydown-${['ONE', 'TWO', 'THREE', 'FOUR'][i]}`, () => this.setTool(t)));
     this.timer = this.time.addEvent({ delay: 1100, loop: true, callback: () => this.running && this.tickOnce() });
     this.draw(); this.hooks.onSelect(this.sel);
   }
