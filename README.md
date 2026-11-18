@@ -6,7 +6,7 @@ Built for the Life underground track at Patriot HackFest Fall 2026.
 
 - Play: `TODO: live URL`
 - Demo video: `TODO: video link`
-- Team: Naz, Chakrika, Sophia
+- Team: Naz, Sophia, Kevin, Nashwan (see [Team and roles](#team-and-roles))
 
 ## The story
 
@@ -79,14 +79,45 @@ npm test         # run the simulation tests
 npm run build    # production build in dist/
 ```
 
+## Team and roles
+
+| Person | Role | Owns |
+| --- | --- | --- |
+| Naz ([@nasnasbro55-design](https://github.com/nasnasbro55-design)) | Simulation lead and integration | `src/sim/`, `src/sim/types.ts`, tests, final submission check |
+| Kevin | Game and graphics lead | `src/game/`, Phaser map, sprites, lights, taps, coughing, check-in sparks |
+| Nashwan ([@nashCoder2003](https://github.com/nashCoder2003)) | HUD and UI lead | `src/ui/`, warning feed, Directorate vs Lantern panel, allocation screen, menus, win and lose flow |
+| Sophia | Art, sound and presentation | `public/assets/`, palette, sprites, icons, sound, title and end screens, demo video, asset credits |
+
+Roles are the starting split. Swap or share work as needed, but tell the owner of a folder before changing their files.
+
 ## Project structure
 
 ```text
-src/sim/    simulation core, no Phaser imports, with tests
-src/game/   Phaser scenes
-src/ui/     HTML HUD
-public/     art and sound assets
+lantern/
+  index.html            page shell with #game and #hud containers
+  package.json          scripts and dependencies
+  tsconfig.json         TypeScript config
+  public/
+    assets/             art and sound files (Sophia)
+  src/
+    main.ts             starts the Phaser game
+    sim/                simulation core, no Phaser imports, with tests (Naz)
+      types.ts          shared data contract: Kind, LevelState, Alert, WorldState, Sim
+      index.ts          public exports
+    game/               Phaser scenes (Kevin)
+      MapScene.ts       Hollow map scene
+    ui/                 HTML and CSS HUD (Nashwan)
 ```
+
+The game reads state only through the `Sim` interface in `src/sim/types.ts`. If you need a new field, ask Naz first so the sim and the UI stay in step.
+
+## Working together
+
+- Pull before you start and before you push: `git pull`.
+- Work on a short branch (`git checkout -b yourname/feature`) and merge to `main` when it runs. `main` must always build.
+- Run `npm run build` and `npm test` before pushing.
+- Never commit `.env` files or API keys.
+- Deadline: building ends Fri Nov 20 at 11 PM. No edits after submission.
 
 ## Stack
 
