@@ -21,7 +21,7 @@ let sel = 12, scene: MapScene;
 new Phaser.Game({
   type: Phaser.AUTO, parent: 'game', width: 960, height: 640, backgroundColor: '#0b0d12',
   scene: (scene = new MapScene(sim, {
-    onState: w => { draw(feed, e => renderWarnings(e, w.alerts), e => fallbackWarnings(e, w.alerts)); draw(panel, e => renderPanel(e, w.levels[sel - 1]), e => fallbackPanel(e, w.levels[sel - 1])); },
+    onState: w => { if (w.rule !== null && w.outcome === 'playing') modal.replaceChildren(); draw(feed, e => renderWarnings(e, w.alerts), e => fallbackWarnings(e, w.alerts)); draw(panel, e => renderPanel(e, w.levels[sel - 1]), e => fallbackPanel(e, w.levels[sel - 1])); },
     onSelect: l => { sel = l; },
     onAllocate: () => draw(modal, e => showAllocation(e, r => { sim.act({ type: 'alloc', level: 0, x: r === 'fair' ? 1 : 0 }); modal.replaceChildren(); scene.resume(); }), e => fallbackAllocation(e, r => { sim.act({ type: 'alloc', level: 0, x: r === 'fair' ? 1 : 0 }); modal.replaceChildren(); scene.resume(); })),
     onEnd: w => draw(modal, e => showEnd(e, w.outcome === 'won'), e => fallbackEnd(e, w)),
