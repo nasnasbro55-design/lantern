@@ -1,0 +1,7 @@
+/* Owner: Sophia. HUD styling: warning feed, panels, allocation screen, menus, title and end screens.
+   Agree class names with Nashwan (for example .warning, .warning.critical, .panel, .alloc-choice). */
+#hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}

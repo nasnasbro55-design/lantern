@@ -1,3 +1,4 @@
+import './ui/hud.css';
 import Phaser from 'phaser';
 import { MapScene } from './game/MapScene';
 

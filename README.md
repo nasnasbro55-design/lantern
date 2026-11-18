@@ -94,20 +94,37 @@ Roles are the starting split. Swap or share work as needed, but tell the owner o
 
 ```text
 lantern/
+  README.md             this file
+  TASKS.md              who does what, with checklists
   index.html            page shell with #game and #hud containers
   package.json          scripts and dependencies
   tsconfig.json         TypeScript config
   public/
     assets/             art and sound files (Sophia)
+      CREDITS.md        source and license for every asset (Sophia)
   src/
-    main.ts             starts the Phaser game
-    sim/                simulation core, no Phaser imports, with tests (Naz)
-      types.ts          shared data contract: Kind, LevelState, Alert, WorldState, Sim
+    main.ts             starts the Phaser game (Naz)
+    sim/                simulation core, no Phaser imports (Naz and Kevin)
+      types.ts          shared data contract: Kind, LevelState, Alert, WorldState, Sim (Naz)
       index.ts          public exports
-    game/               Phaser scenes (Kevin)
+      world.ts          scripted disaster timeline, truth vs official values (Naz)
+      forecaster.ts     trend forecaster and early warnings (Kevin)
+      allocator.ts      fair-share vs Directorate allocation (Kevin)
+      mesh.ts           mesh relays, shaft links, check-ins (Kevin)
+      verdict.ts        surface probe verdict (Kevin)
+      ledger.ts         signed readings and hash-chained log (Kevin)
+      *.test.ts         Vitest tests next to each file (Kevin)
+    game/               Phaser scenes (Naz)
       MapScene.ts       Hollow map scene
-    ui/                 HTML and CSS HUD (Nashwan)
+    ui/                 HTML and CSS HUD (Nashwan and Sophia)
+      WarningFeed.ts    early warning feed (Nashwan)
+      DirectoratePanel.ts  Directorate vs Lantern panel (Nashwan)
+      AllocationScreen.ts  allocation choice screen (Nashwan)
+      EndScreens.ts     win and lose flow (Nashwan logic, Sophia look)
+      hud.css           HUD styling (Sophia)
 ```
+
+Most files are stubs with a TODO comment and the function signature to fill in. Open your files and start there. See `TASKS.md` for the checklist.
 
 The game reads state only through the `Sim` interface in `src/sim/types.ts`. If you need a new field, ask Naz first so the sim and the UI stay in step.
 
