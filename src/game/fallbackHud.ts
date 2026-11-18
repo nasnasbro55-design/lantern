@@ -14,11 +14,11 @@ export function fallbackPanel(el: HTMLElement, l: LevelState) {
   box(el, ''); row(el, `LEVEL ${l.level}`, '#f5c36b'); row(el, l.sensed ? 'Lantern says (truth)' : 'Directorate says (official)', l.sensed ? '#f5c36b' : '#7d8596');
   const v = l.sensed ? l.truth : l.official; row(el, `power ${Math.round(v.voltage)}  heat ${Math.round(v.temp)}`); row(el, `water ${Math.round(v.water)}  cough ${Math.round(v.cough)}`);
 }
-export function fallbackAllocation(el: HTMLElement, onChoose: (r: AllocationRule) => void) {
-  box(el, 'position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:360px;font-size:14px;text-align:center'); row(el, 'Supply is running short. Who gets power, water and food?', '#f5c36b');
+export function fallbackAllocation(root: HTMLElement, onChoose: (r: AllocationRule) => void) {
+  const el = root.appendChild(document.createElement('div')); box(el, 'position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:360px;font-size:14px;text-align:center'); row(el, 'Supply is running short. Who gets power, water and food?', '#f5c36b');
   ([['directorate', 'Directorate: upper levels first'], ['fair', 'Fair share: hardest hit levels first']] as const).forEach(([r, label]) => { const b = document.createElement('button'); b.textContent = label; b.style.cssText = 'display:block;width:100%;margin:8px 0;padding:8px;font:inherit;cursor:pointer'; b.onclick = () => onChoose(r); el.append(b); });
 }
-export function fallbackEnd(el: HTMLElement, w: WorldState) {
-  box(el, 'position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:380px;font-size:15px;text-align:center'); row(el, w.outcome === 'won' ? 'THE HOLLOW HOLDS' : 'THE LIGHTS WENT OUT', '#f5c36b'); row(el, w.note);
+export function fallbackEnd(root: HTMLElement, w: WorldState) {
+  const el = root.appendChild(document.createElement('div')); box(el, 'position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:380px;font-size:15px;text-align:center'); row(el, w.outcome === 'won' ? 'THE HOLLOW HOLDS' : 'THE LIGHTS WENT OUT', '#f5c36b'); row(el, w.note);
   const b = document.createElement('button'); b.textContent = 'Play again'; b.style.cssText = 'margin-top:10px;padding:8px 16px;font:inherit;cursor:pointer'; b.onclick = () => location.reload(); el.append(b);
 }
