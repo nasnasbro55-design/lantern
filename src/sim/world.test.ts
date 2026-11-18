@@ -48,6 +48,13 @@ describe('world', () => {
   it('loses when a mid level goes dark unseen and unconnected', () => {
     expect(run('fair', []).outcome).toBe('lost');
   });
+  it('sends check-ins from level 12 once shafts on every second level link it to the hub', () => {
+    const s = createSim(); s.reset(7);
+    [12, 10, 8, 6, 4, 2].forEach(l => s.act({ type: 'shaft', level: l, x: 4 }));
+    let w = s.act({ type: 'relay', level: 1, x: 1 }), seen = false;
+    for (let i = 0; i < 30; i++) { w = s.step(); seen ||= w.checkins.some(c => c.level === 12); }
+    expect(seen).toBe(true);
+  });
   it('cannot be won without confirming the surface', () => {
     expect(run('fair', [6, 7, 8], false).outcome).toBe('lost');
   });

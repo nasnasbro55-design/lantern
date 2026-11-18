@@ -43,8 +43,8 @@ export function createSim(): Sim {
       if (!lv || a.x < 0 || a.x > 9) return w;
       if (w.points < cost) { w.note = `Not enough build points (need ${cost}).`; return w; }
       if (a.type === 'sensor') { if (lv.sensed) { w.note = 'Already sensed.'; return w; } lv.sensed = true; w.note = `Sensor live on level ${a.level}.`; }
-      else if (w.nodes.some(n => n.type === a.type && n.level === a.level && n.x === a.x)) { w.note = 'Already built here.'; return w; }
-      else { link++; w.nodes.push({ type: a.type, level: a.level, x: a.x, link }); if (a.type === 'shaft' && a.level > 1) w.nodes.push({ type: 'shaft', level: a.level - 1, x: a.x, link }); if (a.type === 'shaft' && a.level === 1) w.surface = true; w.note = `${a.type} built on level ${a.level}.`; }
+      else if (w.nodes.some(n => n.type === a.type && n.level === a.level && n.x === a.x && (n.link < 0 || w.nodes.find(m => m.link === n.link) === n))) { w.note = 'Already built here.'; return w; }
+      else { link++; w.nodes.push({ type: a.type, level: a.level, x: a.x, link }); for (let up = 1; up <= 2 && a.type === 'shaft' && a.level - up >= 1; up++) w.nodes.push({ type: 'shaft', level: a.level - up, x: a.x, link }); if (a.type === 'shaft' && a.level === 1) w.surface = true; w.note = `${a.type} built on level ${a.level}.`; }
       w.points -= cost; w.alerts = alerts();
       return w;
     },

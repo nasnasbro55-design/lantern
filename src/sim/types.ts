@@ -3,7 +3,7 @@
 export type Kind = 'voltage' | 'temp' | 'water' | 'cough';
 export interface LevelState { level: number; truth: Record<Kind, number>; official: Record<Kind, number>; sensed: boolean; powered: boolean; }
 export interface Alert { level: number; kind: Kind; eta: number; severity: 'watch' | 'high' | 'critical'; }
-/** A built mesh point. Shafts create two linked points (level and the level above); a shaft on level 1 is the surface exit. */
+/** A built mesh point. Shafts create linked points on their level and the two levels above; a shaft on level 1 is the surface exit. */
 export interface MeshPoint { type: 'relay' | 'shaft'; level: number; x: number; link: number; }
 export interface Checkin { level: number; ok: boolean; }
 export interface WorldState {
