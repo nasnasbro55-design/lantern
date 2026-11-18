@@ -21,7 +21,7 @@ export class MapScene extends Phaser.Scene {
     }
     this.status = this.add.text(8, 604, '', { color: '#cfd6e4', fontSize: '12px', fontFamily: 'monospace' });
     TOOLS.forEach((t, i) => this.toolTxt.push(this.add.text(8 + i * 118, 622, `${i + 1} ${t}${t === 'inspect' ? '' : ' ' + COST[t]}`, { fontSize: '12px', fontFamily: 'monospace', backgroundColor: '#1b2030', padding: { x: 5, y: 2 } }).setInteractive({ useHandCursor: true }).on('pointerdown', () => this.setTool(t))));
-    this.intro = this.add.text(X0 + 5 * RW, 300, 'Press SPACE to begin\n1 inspect  2 sensor  3 relay  4 shaft\nClick a room to build or inspect.', { color: '#f5c36b', fontSize: '15px', fontFamily: 'monospace', align: 'center', backgroundColor: '#0b0d12cc', padding: { x: 14, y: 10 } }).setOrigin(0.5);
+    this.intro = this.add.text(X0 + 5 * RW, 300, 'Press SPACE to begin\n1 inspect  2 sensor  3 relay  4 shaft\nClick a room to build or inspect.\nShafts link levels so check-ins reach L1.', { color: '#f5c36b', fontSize: '15px', fontFamily: 'monospace', align: 'center', backgroundColor: '#0b0d12cc', padding: { x: 14, y: 10 } }).setOrigin(0.5);
     this.input.on('pointerdown', (p: Phaser.Input.Pointer) => {
       const l = Math.floor((p.y - Y0) / RH) + 1, x = Math.floor((p.x - X0) / RW);
       if (l < 1 || l > LEVELS || x < 0 || x > 9) return;

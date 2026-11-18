@@ -19,6 +19,6 @@ export function fallbackAllocation(root: HTMLElement, onChoose: (r: AllocationRu
   ([['directorate', 'Directorate: upper levels first'], ['fair', 'Fair share: hardest hit levels first']] as const).forEach(([r, label]) => { const b = document.createElement('button'); b.textContent = label; b.style.cssText = 'display:block;width:100%;margin:8px 0;padding:8px;font:inherit;cursor:pointer'; b.onclick = () => onChoose(r); el.append(b); });
 }
 export function fallbackEnd(root: HTMLElement, w: WorldState) {
-  const el = root.appendChild(document.createElement('div')); box(el, 'position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:380px;font-size:15px;text-align:center'); row(el, w.outcome === 'won' ? 'THE HOLLOW HOLDS' : 'THE LIGHTS WENT OUT', '#f5c36b'); row(el, w.note);
+  const el = root.appendChild(document.createElement('div')); box(el, 'position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:440px;box-sizing:border-box;padding:18px 24px;line-height:1.5;font-size:15px;text-align:center'); row(el, w.outcome === 'won' ? 'THE HOLLOW HOLDS' : 'THE LIGHTS WENT OUT', '#f5c36b'); row(el, w.note);
   const b = document.createElement('button'); b.textContent = 'Play again'; b.style.cssText = 'margin-top:10px;padding:8px 16px;font:inherit;cursor:pointer'; b.onclick = () => location.reload(); el.append(b);
 }
