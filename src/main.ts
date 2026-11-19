@@ -27,3 +27,6 @@ new Phaser.Game({
     onEnd: w => draw(modal, e => showEnd(e, w.outcome === 'won'), e => fallbackEnd(e, w)),
   })),
 });
+
+// Dev-only hook for playtesting from the console; not present in production builds.
+if ((import.meta as any).env?.DEV) (window as any).lantern = { sim, scene };
