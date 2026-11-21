@@ -7,7 +7,7 @@ export class TitleScene extends Phaser.Scene {
   preload() { loadManifest(this); }
   create() {
     this.add.rectangle(480, 320, 960, 640, 0x0b0d12);
-    if (hasImg(this, 'title')) this.add.image(480, 300, 'title');
+    if (hasImg(this, 'title')) this.add.image(480, 320, 'title').setScale(640 / 540);
     else this.add.text(480, 240, 'LANTERN', { color: '#f5c36b', fontSize: '72px', fontFamily: 'monospace' }).setOrigin(0.5);
     const t = (y: number, s: string, c: string, z: number) => this.add.text(480, y, s, { color: c, fontSize: `${z}px`, fontFamily: 'monospace', align: 'center' }).setOrigin(0.5);
     if (!hasImg(this, 'title')) t(310, 'the Hollow: twelve levels, forty-eight hours, one honest signal', '#cfd6e4', 16);
