@@ -14,7 +14,7 @@ export class MapScene extends Phaser.Scene {
   constructor(private sim: Sim, private hooks: Hooks) { super('map'); }
 
   create() {
-    this.w = this.sim.reset(Date.now() % 100000); this.g = this.add.graphics().setDepth(0); if (hasImg(this, 'bg')) this.add.image(480, 320, 'bg').setDepth(-2);
+    this.w = this.sim.reset(Date.now() % 100000); this.g = this.add.graphics().setDepth(0); if (hasImg(this, 'bg')) this.add.image(480, 320, 'bg').setDisplaySize(960, 640).setDepth(-2);
     this.add.text(X0, 12, 'LANTERN  the Hollow', { color: '#f5c36b', fontSize: '16px', fontFamily: 'monospace' });
     for (let l = 1; l <= LEVELS; l++) {
       this.add.text(8, rowY(l) + 14, `L${l}`, { color: '#8892a6', fontSize: '13px', fontFamily: 'monospace' });
