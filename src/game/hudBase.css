@@ -1,12 +1,13 @@
-/* Owner: Naz. Base HUD layout so the HUD modules are readable and clickable. Sophia's ui/hud.css loads after this and can override anything here. */
-#hud-stage { color: #cfd6e4; font: 12px/1.5 monospace; }
-#hud-warnings, #hud-panel { background: #141826dd; padding: 8px; pointer-events: auto; }
+/* Owner: Naz. Layout glue between the game and the HUD modules. Colours, fonts and panel looks come from Sophia's ui/hud.css (loaded after this). */
+#hud-stage { font-size: 13px; }
+#hud-warnings, #hud-panel { pointer-events: auto; }
 #hud-warnings { max-height: 316px; overflow-y: auto; box-sizing: border-box; }
 #hud-warnings:empty, #hud-panel:empty, #hud-modal:empty { display: none; }
-#hud-warnings h3, #hud-panel h3, #hud-modal h2, #hud-modal h3 { margin: 0 0 6px; color: #f5c36b; font-size: 13px; }
-.warning.critical { color: #ff5d5d; }
-.warning.high { color: #ff9f43; }
-.warning.watch { color: #9fb4d6; }
-#hud-modal { left: 50%; top: 50%; transform: translate(-50%, -50%); width: 440px; box-sizing: border-box; padding: 18px 24px; background: #141826ee; text-align: center; font-size: 14px; line-height: 1.5; pointer-events: auto; }
-#hud-modal h2 { font-size: 16px; }
-#hud-modal button { display: block; width: 100%; margin: 8px 0; padding: 8px; font: inherit; cursor: pointer; }
+#hud-warnings h3, #hud-panel h3, #hud-modal h2, #hud-modal h3 { margin: 0 0 6px; font-size: 15px; }
+#hud-panel.truth h3 { color: var(--lantern, #f5c36b); }
+#hud-panel.official h3 { color: var(--directorate, #8da4ab); }
+#hud-modal { left: 50%; top: 50%; transform: translate(-50%, -50%); width: 440px; box-sizing: border-box; padding: 18px 24px; text-align: center; line-height: 1.5; pointer-events: auto; }
+#hud-modal h2 { font-size: 22px; }
+#hud-modal button { display: block; width: 100%; margin: 8px 0; }
+.end-screen.win h2 { color: var(--safe, #7fc8a9); }
+.end-screen.lose h2 { color: var(--danger, #d4553a); }
