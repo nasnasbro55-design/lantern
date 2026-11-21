@@ -6,5 +6,13 @@
     "miner": "miner.png",
     "lamp": "lamp.png"
   },
-  "audio": {}
+  "audio": {
+    "music": "music.mp3",
+    "drip": "drip.mp3",
+    "cough": "cough.mp3",
+    "spark": "spark.mp3",
+    "lightsout": "lightsout.mp3",
+    "win": "win.mp3",
+    "lose": "lose.mp3"
+  }
 }
