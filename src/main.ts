@@ -2,6 +2,7 @@ import './game/hudBase.css';
 import './ui/hud.css';
 import Phaser from 'phaser';
 import { MapScene } from './game/MapScene';
+import { TitleScene } from './game/TitleScene';
 import { fallbackAllocation, fallbackEnd, fallbackPanel, fallbackWarnings } from './game/fallbackHud';
 import { createSim } from './sim';
 import { record, summary } from './game/signedLog';
@@ -23,12 +24,12 @@ let sel = 12, scene: MapScene;
 
 new Phaser.Game({
   type: Phaser.AUTO, parent: 'game', width: 960, height: 640, backgroundColor: '#0b0d12',
-  scene: (scene = new MapScene(sim, {
+  scene: [TitleScene, (scene = new MapScene(sim, {
     onState: w => { record(w); if (w.rule !== null && w.outcome === 'playing') modal.replaceChildren(); draw(feed, e => renderWarnings(e, w.alerts), e => fallbackWarnings(e, w.alerts)); draw(panel, e => renderPanel(e, w.levels[sel - 1]), e => fallbackPanel(e, w.levels[sel - 1])); panel.classList.toggle('truth', w.levels[sel - 1].sensed); panel.classList.toggle('official', !w.levels[sel - 1].sensed); },
     onSelect: l => { sel = l; },
     onAllocate: () => { modal.className = 'panel'; draw(modal, e => showAllocation(e, r => { sim.act({ type: 'alloc', level: 0, x: r === 'fair' ? 1 : 0 }); modal.replaceChildren(); scene.resume(); }), e => fallbackAllocation(e, r => { sim.act({ type: 'alloc', level: 0, x: r === 'fair' ? 1 : 0 }); modal.replaceChildren(); scene.resume(); })); },
     onEnd: w => { draw(modal, e => showEnd(e, w.outcome === 'won'), e => fallbackEnd(e, w)); modal.classList.add('panel'); modal.append(...(w.outcome === 'lost' ? [Object.assign(document.createElement('p'), { textContent: w.note })] : []), Object.assign(document.createElement('button'), { textContent: 'Play again', onclick: () => location.reload() })); summary().then(t => { if (t) modal.insertBefore(Object.assign(document.createElement('p'), { textContent: t }), modal.querySelector('button')); }); },
-  })),
+  }))],
 });
 
 // Dev-only hook for playtesting from the console; not present in production builds.
