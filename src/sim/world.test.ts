@@ -55,6 +55,12 @@ describe('world', () => {
     for (let i = 0; i < 30; i++) { w = s.step(); seen ||= w.checkins.some(c => c.level === 12); }
     expect(seen).toBe(true);
   });
+  it('rejects the flooded probe cluster and reports a safe surface once the exit is built', () => {
+    const w = run('fair', [6, 7, 8]);
+    expect(w.verdict).not.toBeNull();
+    expect(w.verdict!).toBeGreaterThan(19);
+    expect(w.verdict!).toBeLessThan(20);
+  });
   it('cannot be won without confirming the surface', () => {
     expect(run('fair', [6, 7, 8], false).outcome).toBe('lost');
   });

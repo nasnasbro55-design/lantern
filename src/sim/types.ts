@@ -9,7 +9,7 @@ export interface Checkin { level: number; ok: boolean; }
 export interface WorldState {
   tick: number; levels: LevelState[]; alerts: Alert[]; netUp: boolean; supply: number;
   points: number; nodes: MeshPoint[]; checkins: Checkin[]; rule: 'directorate' | 'fair' | null;
-  surface: boolean; outcome: 'playing' | 'won' | 'lost'; note: string;
+  surface: boolean; verdict: number | null; outcome: 'playing' | 'won' | 'lost'; note: string;
 }
 /** act: sensor, relay, shaft place a build on (level, x 0 to 9). alloc picks the rule: x = 0 Directorate, x = 1 fair share. */
 export interface Sim { reset(seed: number): WorldState; step(): WorldState; act(a: { type: 'sensor' | 'relay' | 'shaft' | 'alloc'; level: number; x: number }): WorldState; }
