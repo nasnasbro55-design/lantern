@@ -54,12 +54,12 @@ export class MapScene extends Phaser.Scene {
   }
 
   private spark(level: number, ok: boolean) {
-    sfx(this, 'spark', { volume: 0.3 }); const x = X0 + 5 * RW + Phaser.Math.Between(-90, 90), c = this.add.circle(x, rowY(level) + 22, 4, 0xf5c36b);
+    sfx(this, 'spark', { volume: 0.2 }); const x = X0 + 5 * RW + Phaser.Math.Between(-90, 90), c = this.add.circle(x, rowY(level) + 22, 4, 0xf5c36b);
     this.tweens.add({ targets: c, y: ok ? rowY(1) + 22 : rowY(level) - Phaser.Math.Between(40, 140), alpha: ok ? 1 : 0, duration: 900, onComplete: () => c.destroy() });
   }
 
   private cough(level: number) {
-    sfx(this, 'cough', { volume: 0.4 }); const t = this.add.text(X0 + Phaser.Math.Between(10, 9 * RW), rowY(level) + 10, Phaser.Math.RND.pick(['*cough*', 'hack', 'ahem']), { color: '#d9a066', fontSize: '10px', fontFamily: 'monospace' });
+    sfx(this, 'cough', { volume: 0.25 }); const t = this.add.text(X0 + Phaser.Math.Between(10, 9 * RW), rowY(level) + 10, Phaser.Math.RND.pick(['*cough*', 'hack', 'ahem']), { color: '#d9a066', fontSize: '10px', fontFamily: 'monospace' });
     this.tweens.add({ targets: t, y: t.y - 14, alpha: 0, duration: 900, onComplete: () => t.destroy() });
   }
 
