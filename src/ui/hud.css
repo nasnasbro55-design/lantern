@@ -1,7 +1,123 @@
 /* Owner: Sophia. HUD styling: warning feed, panels, allocation screen, menus, title and end screens.
    Agree class names with Nashwan (for example .warning, .warning.critical, .panel, .alloc-choice). */
+/* Lantern HUD styles  (src/ui/hud.css)
+   Owner: Sophia. Class names below are placeholders:
+   match them to what Nashwan uses in src/ui/*.ts (or ask him to use these). */
+
+:root {
+  /* Rock and shadow: the Hollow itself */
+  --shaft:        #14181C;  /* page / canvas surround */
+  --rock:         #212830;  /* panels */
+  --rock-light:   #36404A;  /* borders, dividers */
+
+  /* The core idea: cold = official, warm = true */
+  --directorate:  #8DA4AB;  /* official numbers, fogged and sterile */
+  --lantern:      #F2A93B;  /* real sensor data, your lantern light */
+
+  /* Status */
+  --danger:       #D4553A;  /* critical alerts, lung sickness */
+  --brown-water:  #9A7430;  /* unsafe water */
+  --safe:         #7FC8A9;  /* good readings, surface confirmed */
+
+  /* Text */
+  --text:         #E8E4D8;
+  --text-dim:     #A8ADA8;
+
+  /* Depth tint: upper levels brighter, deep levels hot and dark */
+  --depth-top:    #2C3A44;
+  --depth-mid:    #2A2623;
+  --depth-deep:   #3A1D17;
+
+  --font-head: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --font-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--shaft);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
 #hud {
   position: absolute;
   inset: 0;
-  pointer-events: none;
+  pointer-events: none;           
+  font-size: 15px;
 }
+#hud .panel, #hud button { pointer-events: auto; }
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.4em;
+}
+
+/* Panels */
+.panel {
+  background: color-mix(in srgb, var(--rock) 92%, transparent);
+  border: 1px solid var(--rock-light);
+  border-radius: 6px;
+  padding: 12px 14px;
+}
+
+/* Warning feed (Nashwan: WarningFeed.ts) */
+.warning-feed { max-width: 320px; }
+.warning { border-left: 4px solid var(--lantern); padding: 6px 10px; margin-bottom: 6px; }
+.warning.watch    { border-color: var(--lantern); }
+.warning.high     { border-color: var(--brown-water); }
+.warning.critical { border-color: var(--danger); animation: pulse 1.6s ease-in-out infinite; }
+
+/* Directorate vs Lantern (Nashwan: DirectoratePanel.ts) */
+.official { color: var(--directorate); }            /* fogged, as the Directorate reports it */
+.official .value { opacity: 0.75; }
+.truth    { color: var(--lantern); font-weight: 600; } /* what your sensor sees */
+.truth.bad { color: var(--danger); }
+.truth.good { color: var(--safe); }
+.unsensed { color: var(--directorate); font-style: italic; }
+
+/* Buttons */
+button {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  background: var(--lantern);
+  color: #1A1206;
+  border: 0;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+button:hover { filter: brightness(1.1); }
+button.secondary { background: transparent; color: var(--text); border: 1px solid var(--rock-light); }
+button:focus-visible { outline: 3px solid var(--safe); outline-offset: 2px; }
+
+/* Title and end screens (EndScreens.ts) */
+.screen {
+  position: absolute; inset: 0;
+  display: grid; place-content: center; text-align: center; gap: 12px;
+  background: radial-gradient(circle at 50% 40%, #2A2418 0%, var(--shaft) 60%);
+  pointer-events: auto;
+}
+.screen h1 { font-size: clamp(3rem, 9vw, 6rem); color: var(--lantern); }
+.screen.lose { background: radial-gradient(circle at 50% 40%, #2A1612 0%, var(--shaft) 60%); }
+.screen.lose h1 { color: var(--danger); }
+.screen.win  h1 { color: var(--safe); }
+
+@keyframes pulse { 50% { background: rgba(212, 85, 58, 0.18); } }
+@media (prefers-reduced-motion: reduce) { .warning.critical { animation: none; } }
+
+.alloc-choice {
+  display: grid;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--rock);
+  border: 1px solid var(--rock-light);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.alloc-choice:hover { border-color: var(--lantern); }
+.alloc-choice.selected { border-color: var(--lantern); background: color-mix(in srgb, var(--lantern) 12%, var(--rock)); }
+.alloc-choice.directorate { border-left: 4px solid var(--directorate); }
+.alloc-choice.fair-share  { border-left: 4px solid var(--lantern); }
