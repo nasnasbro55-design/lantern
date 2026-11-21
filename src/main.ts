@@ -25,7 +25,7 @@ new Phaser.Game({
     onState: w => { if (w.rule !== null && w.outcome === 'playing') modal.replaceChildren(); draw(feed, e => renderWarnings(e, w.alerts), e => fallbackWarnings(e, w.alerts)); draw(panel, e => renderPanel(e, w.levels[sel - 1]), e => fallbackPanel(e, w.levels[sel - 1])); },
     onSelect: l => { sel = l; },
     onAllocate: () => draw(modal, e => showAllocation(e, r => { sim.act({ type: 'alloc', level: 0, x: r === 'fair' ? 1 : 0 }); modal.replaceChildren(); scene.resume(); }), e => fallbackAllocation(e, r => { sim.act({ type: 'alloc', level: 0, x: r === 'fair' ? 1 : 0 }); modal.replaceChildren(); scene.resume(); })),
-    onEnd: w => { draw(modal, e => showEnd(e, w.outcome === 'won'), e => fallbackEnd(e, w)); modal.append(Object.assign(document.createElement('p'), { textContent: w.note }), Object.assign(document.createElement('button'), { textContent: 'Play again', onclick: () => location.reload() })); },
+    onEnd: w => { draw(modal, e => showEnd(e, w.outcome === 'won'), e => fallbackEnd(e, w)); modal.append(...(w.outcome === 'lost' ? [Object.assign(document.createElement('p'), { textContent: w.note })] : []), Object.assign(document.createElement('button'), { textContent: 'Play again', onclick: () => location.reload() })); },
   })),
 });
 

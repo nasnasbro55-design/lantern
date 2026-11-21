@@ -1,6 +1,7 @@
 /* Owner: Naz. Base HUD layout so the HUD modules are readable and clickable. Sophia's ui/hud.css loads after this and can override anything here. */
 #hud-stage { color: #cfd6e4; font: 12px/1.5 monospace; }
 #hud-warnings, #hud-panel { background: #141826dd; padding: 8px; pointer-events: auto; }
+#hud-warnings { max-height: 316px; overflow-y: auto; box-sizing: border-box; }
 #hud-warnings:empty, #hud-panel:empty, #hud-modal:empty { display: none; }
 #hud-warnings h3, #hud-panel h3, #hud-modal h2, #hud-modal h3 { margin: 0 0 6px; color: #f5c36b; font-size: 13px; }
 .warning.critical { color: #ff5d5d; }
