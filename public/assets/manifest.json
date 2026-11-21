@@ -1,0 +1,5 @@
+{
+  "_help": "List files that exist in this folder. images keys: title, bg, miner, lamp. audio keys: music, drip, cough, spark, lightsout, win, lose. Anything not listed is skipped.",
+  "images": {},
+  "audio": {}
+}
