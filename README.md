@@ -5,7 +5,7 @@
 Built for the Life underground track at Patriot HackFest Fall 2026.
 
 - Play: https://lantern-lemon.vercel.app
-- Demo video: `TODO: video link`
+- Demo video: https://www.youtube.com/watch?v=mYMt5Nt6uPc
 - Team: Naz, Sophia, Kevin, Nashwan (see [Team and roles](#team-and-roles))
 
 ## The story
