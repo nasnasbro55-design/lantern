@@ -157,6 +157,6 @@ Problems not covered yet: tunnel safety and flooding, crowding and shared space,
 
 ## Credits
 
-- Art and sound: all art (title, background, miner, lamp) by Sophia, generated with Python and Pillow with help from Claude; no sound. Full details in `public/assets/CREDITS.md`.
+- Art and sound: all art (title, background, miner, lamp) and all sound (music and effects) by Sophia, generated with Python and Claude (Pillow for images, NumPy and SciPy for sound). Full details in `public/assets/CREDITS.md`.
 - Built with help from AI tools, which the event rules allow.
 - Patriot HackFest is run by PatriotHacks, the Computer Science Club and HackOverflow at George Mason University.
