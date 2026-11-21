@@ -1,5 +1,3 @@
-# Asset credits (owner: Sophia)
-
 # Credits
 
 ## Art
@@ -13,10 +11,7 @@
 
 ## Sound
 
-| File | What it is | Made by / source | License |
-|------|-----------|------------------|---------|
-| music.mp3 | Background music | [artist, track title, URL] | [e.g. CC BY 4.0] |
-| cough.mp3 | Cough effect | [site, URL] | [e.g. CC0] |
+Lantern has no sound files.
 
 ## Tools
 
