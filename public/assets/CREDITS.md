@@ -2,14 +2,14 @@
 
 # Credits
 
-All art and sound in Lantern are listed below with their source and license.
-
 ## Art
 
 | File | What it is | Made by / source | License |
 |------|-----------|------------------|---------|
-| miner.png | Miner sprite | Sophia | Original work |
-| bg.png | Tunnel background | [source name and URL] | [e.g. CC0] |
+| miner.png | Miner sprite | Sophia, generated with AI (Claude) using Python code | Original work |
+| lamp.png | Lantern sprite | Sophia, generated with AI (Claude) using Python code | Original work |
+| bg.png | Hollow background, 12 levels | Sophia, generated with AI (Claude) using Python code | Original work |
+| title.png | Title screen | Sophia, generated with AI (Claude) using Python code | Original work |
 
 ## Sound
 
@@ -20,7 +20,9 @@ All art and sound in Lantern are listed below with their source and license.
 
 ## Tools
 
-- [Figma, Canva, Audacity, Claude]
+- Python with the Pillow library (drew the images)
+- Claude, an AI assistant (wrote the code that generated the images)
+- DejaVu Sans Condensed Bold font (title screen text)
 
 ## Code
 
