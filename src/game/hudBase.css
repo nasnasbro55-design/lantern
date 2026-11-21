@@ -1,7 +1,8 @@
 /* Owner: Naz. Layout glue between the game and the HUD modules. Colours, fonts and panel looks come from Sophia's ui/hud.css (loaded after this). */
 #hud-stage { font-size: 13px; }
-#hud-warnings, #hud-panel { pointer-events: auto; }
-#hud-warnings { max-height: 316px; overflow-y: auto; box-sizing: border-box; }
+#hud-warnings, #hud-panel { pointer-events: auto; box-sizing: border-box; }
+#hud-warnings { max-height: 316px; overflow-y: auto; }
+#hud-panel { overflow-wrap: anywhere; }
 #hud-warnings:empty, #hud-panel:empty, #hud-modal:empty { display: none; }
 #hud-warnings h3, #hud-panel h3, #hud-modal h2, #hud-modal h3 { margin: 0 0 6px; font-size: 15px; }
 #hud-panel.truth h3 { color: var(--lantern, #f5c36b); }
