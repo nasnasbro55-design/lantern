@@ -30,6 +30,6 @@
 
 ## Code
 
-Game by Naz (Nasrullah Hussain), Sophia, Kevin Espinoza and Nashwan Islam for Patriot HackFest Fall 2026.
+Game by Naz (Nasrullah Hussain), Sophia Belair-Bogdanova, Kevin Espinoza and Nashwan Islam for Patriot HackFest Fall 2026.
 
 Built with Phaser 3, TypeScript and Vite.
